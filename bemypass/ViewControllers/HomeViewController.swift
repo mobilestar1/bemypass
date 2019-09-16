@@ -14,12 +14,12 @@ class HomeViewController: UIViewController {
     var planeAry = [Plane]()
     var nearbyAirPlaneAry = [NearbyAirPort]()
     
+    @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var quickActionsCollectionView: UICollectionView!
     @IBOutlet weak var followingCollectionView: UICollectionView!
     @IBOutlet weak var nearByCollectionView: UICollectionView!
-    @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     
     let quickActionsCVIdentifier = "quickActionsCollectionView"
     let followingCVIdentifier = "followingCollectionView"
@@ -33,13 +33,21 @@ class HomeViewController: UIViewController {
         setupQuickActionsData()
         setupPlaneData()
         setupNearByData()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         // Init Layout
         initLayout()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        var topSafeArea: CGFloat
+        if #available(iOS 11.0, *) {
+            topSafeArea = view.safeAreaInsets.top
+        } else {
+            topSafeArea = topLayoutGuide.length
+        }
+        scrollViewTopConstraint.constant = -topSafeArea
     }
     
     func initLayout() {
@@ -47,11 +55,6 @@ class HomeViewController: UIViewController {
         
         searchView.dropShadow(cornerRadius: 5.0, color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0.0, height: 2.0), radius: 4.0)
         
-        // set gradient
-        let topColor = UIColor.init(red: 0, green: 90/255.5, blue: 246/255.0, alpha: 1)
-        let bottomColor = UIColor.init(red: 1/255.0, green: 65/255.0, blue: 176/255.0, alpha: 1.0)
-        mainView.setGradient(colorTop: topColor, colorBottom: bottomColor)
-        topView.setGradient(colorTop: topColor, colorBottom: bottomColor)
         
     }
     
@@ -197,5 +200,30 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         let indexPath = IndexPath(row: (Int(scrollView.contentOffset.x / followingCollectionCellWidth + factor)), section: 0)
         followingCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+    }
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        if (y < 0) {
+            if (topViewHeightConstraint.constant < 350) {
+                topViewHeightConstraint.constant -= y
+                self.view.layoutIfNeeded()
+            }
+            scrollView.contentOffset.y = 0
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        stopedScrolling()
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        stopedScrolling()
+        
+    }
+    func stopedScrolling() {
+        topViewHeightConstraint.constant = 150
+        self.view.layoutIfNeeded()
     }
 }
