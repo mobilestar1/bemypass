@@ -47,14 +47,14 @@ class HomeViewController: UIViewController {
         } else {
             topSafeArea = topLayoutGuide.length
         }
+        // Change scrollview top constraint
         scrollViewTopConstraint.constant = -topSafeArea
     }
     
     func initLayout() {
+        
         // Change Search Bar
-        
         searchView.dropShadow(cornerRadius: 5.0, color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0.0, height: 2.0), radius: 4.0)
-        
         
     }
     
@@ -93,7 +93,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
         case quickActionsCollectionView:
-            return CGSize(width: 145, height: 90)
+            return CGSize(width: 145, height: 110)
         case followingCollectionView:
             return CGSize(width: followingCollectionCellWidth, height: 207)
         case nearByCollectionView:
@@ -193,6 +193,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let isFollowingCollectionViewScrolling = followingCollectionView.isDragging || followingCollectionView.isDecelerating
+        if (!isFollowingCollectionViewScrolling) {
+            return
+        }
         targetContentOffset.pointee = scrollView.contentOffset
         var factor: CGFloat = 0.5
         if velocity.x < 0 {
@@ -223,7 +227,7 @@ extension HomeViewController: UIScrollViewDelegate {
         
     }
     func stopedScrolling() {
-        topViewHeightConstraint.constant = 150
+        topViewHeightConstraint.constant = 180
         self.view.layoutIfNeeded()
     }
 }

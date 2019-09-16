@@ -16,6 +16,6 @@ class QuickActionCollectionViewCell: UICollectionViewCell {
     
     func configure() {
         // configure box shadow and corner radius
-        parentView.dropShadow(color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0.0, height: 2.0), radius: 4.0)
+        parentView.dropShadow(color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0.0, height: 2.0), radius: 3.0)
     }
 }
