@@ -10,8 +10,8 @@ import UIKit
 extension UIView {
     
     // Drop Shadow
-    func dropShadow(color: UIColor, opacity: Float = 0.5, offset: CGSize, radius: CGFloat = 1) {
-        layer.cornerRadius = 8.0
+    func dropShadow(cornerRadius: CGFloat = 8.0, color: UIColor, opacity: Float = 0.5, offset: CGSize, radius: CGFloat = 1) {
+        layer.cornerRadius = cornerRadius
         clipsToBounds = true
         
         // set the shadow properties
@@ -20,5 +20,17 @@ extension UIView {
         layer.shadowOpacity = opacity
         layer.shadowRadius = radius
         layer.masksToBounds = false
+    }
+    
+    // Set Gradient color
+    func setGradient(colorTop: UIColor, colorBottom: UIColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.locations = [0, 1]
+        gradientLayer.frame = bounds
+        
+        layer.insertSublayer(gradientLayer, at: 0)
     }
 }

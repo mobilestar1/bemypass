@@ -14,20 +14,20 @@ class HomeViewController: UIViewController {
     var planeAry = [Plane]()
     var nearbyAirPlaneAry = [NearbyAirPort]()
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var quickActionsCollectionView: UICollectionView!
     @IBOutlet weak var followingCollectionView: UICollectionView!
     @IBOutlet weak var nearByCollectionView: UICollectionView!
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var topView: UIView!
     
     let quickActionsCVIdentifier = "quickActionsCollectionView"
     let followingCVIdentifier = "followingCollectionView"
     let nearByCVIdentifier = "nearByCollectionView"
+    var followingCollectionCellWidth = UIScreen.main.bounds.width - 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Init Layout
-        initLayout()
         
         // setup initial data
         setupQuickActionsData()
@@ -36,18 +36,23 @@ class HomeViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        // Init Layout
+        initLayout()
+    }
+    
     func initLayout() {
         // Change Search Bar
-        searchBar.backgroundImage = UIImage()
-        for view in searchBar.subviews {
-            for subview in view.subviews {
-                if subview.isKind(of: UITextField.self) {
-                    let textField: UITextField = subview as! UITextField
-                    textField.backgroundColor = UIColor.white
-                }
-            }
-        }
-
+        
+        searchView.dropShadow(cornerRadius: 5.0, color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0.0, height: 2.0), radius: 4.0)
+        
+        // set gradient
+        let topColor = UIColor.init(red: 0, green: 90/255.5, blue: 246/255.0, alpha: 1)
+        let bottomColor = UIColor.init(red: 1/255.0, green: 65/255.0, blue: 176/255.0, alpha: 1.0)
+        mainView.setGradient(colorTop: topColor, colorBottom: bottomColor)
+        topView.setGradient(colorTop: topColor, colorBottom: bottomColor)
+        
     }
     
     // Setup Fake Data
@@ -60,6 +65,10 @@ class HomeViewController: UIViewController {
     // Setup Fake Plane Data
     func setupPlaneData() {
         planeAry.append(Plane(fromCancelTime: "00:50", fromTime: "01:50", fromCName: "AMS", fromAddress: "Amsterdam Schiphol", toCancelTime: "13:00", toTime: "14:00", toCName: "PEK", toAddress: "Beijing Capital Int’l", avatarImage: "profile_sample", userName: "Mrs Maggie Eisenhower", userPhone: "+31 4728 4492", planeNo: "AF1234", flag: true))
+        planeAry.append(Plane(fromCancelTime: "14:00", fromTime: "14:00", fromCName: "PVG", fromAddress: "Shanghai Pudong", toCancelTime: "18:00", toTime: "18:00", toCName: "LHR", toAddress: "London Heathrow", avatarImage: "profile_sample", userName: "Mrs Maggie Eisenhower", userPhone: "+31 4728 4492", planeNo: "EK992", flag: false))
+        planeAry.append(Plane(fromCancelTime: "14:00", fromTime: "14:00", fromCName: "PVG", fromAddress: "Shanghai Pudong", toCancelTime: "18:00", toTime: "18:00", toCName: "LHR", toAddress: "London Heathrow", avatarImage: "profile_sample", userName: "Mrs Maggie Eisenhower", userPhone: "+31 4728 4492", planeNo: "EK992", flag: false))
+        planeAry.append(Plane(fromCancelTime: "14:00", fromTime: "14:00", fromCName: "PVG", fromAddress: "Shanghai Pudong", toCancelTime: "18:00", toTime: "18:00", toCName: "LHR", toAddress: "London Heathrow", avatarImage: "profile_sample", userName: "Mrs Maggie Eisenhower", userPhone: "+31 4728 4492", planeNo: "EK992", flag: false))
+        planeAry.append(Plane(fromCancelTime: "14:00", fromTime: "14:00", fromCName: "PVG", fromAddress: "Shanghai Pudong", toCancelTime: "18:00", toTime: "18:00", toCName: "LHR", toAddress: "London Heathrow", avatarImage: "profile_sample", userName: "Mrs Maggie Eisenhower", userPhone: "+31 4728 4492", planeNo: "EK992", flag: false))
         planeAry.append(Plane(fromCancelTime: "14:00", fromTime: "14:00", fromCName: "PVG", fromAddress: "Shanghai Pudong", toCancelTime: "18:00", toTime: "18:00", toCName: "LHR", toAddress: "London Heathrow", avatarImage: "profile_sample", userName: "Mrs Maggie Eisenhower", userPhone: "+31 4728 4492", planeNo: "EK992", flag: false))
     }
     
@@ -81,9 +90,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
         case quickActionsCollectionView:
-            return CGSize(width: 140, height: 90)
+            return CGSize(width: 145, height: 90)
         case followingCollectionView:
-            return CGSize(width: self.view.frame.width-20, height: 207)
+            return CGSize(width: followingCollectionCellWidth, height: 207)
         case nearByCollectionView:
             return CGSize(width: self.view.frame.width/2-15, height: 100)
         default:
@@ -92,10 +101,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if (collectionView == nearByCollectionView) {
-            return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-        }
-        return UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
+        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -183,4 +189,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        targetContentOffset.pointee = scrollView.contentOffset
+        var factor: CGFloat = 0.5
+        if velocity.x < 0 {
+            factor = -factor
+        }
+        let indexPath = IndexPath(row: (Int(scrollView.contentOffset.x / followingCollectionCellWidth + factor)), section: 0)
+        followingCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+    }
 }

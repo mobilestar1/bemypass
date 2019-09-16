@@ -36,7 +36,6 @@ class FollowingCollectionViewCell: UICollectionViewCell {
     }
     
     func addLabelConerRadius() {
-        statusLabel.roundCorners([.topLeft, .topRight], radius: 8.0)
-
+        statusLabel.roundCorners([.topLeft, .topRight], roundRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-30, height: statusLabel.frame.height), radius: 8.0)
     }
 }
