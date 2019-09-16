@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "HomeViewController.scrollViewWillEndDragging(_:withVelocity:targetContentOffset:):HomeViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "followingCollectionView.isDragging">
+            </PersistentString>
+            <PersistentString
+               value = "followingCollectionView.isDecelerating">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "HomeViewController.initLayout():HomeViewController.swift">
          <PersistentStrings>
             <PersistentString
