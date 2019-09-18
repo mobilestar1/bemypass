@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var followingCollectionView: UICollectionView!
     @IBOutlet weak var nearByCollectionView: UICollectionView!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topView: UIView!
     
     let quickActionsCVIdentifier = "quickActionsCollectionView"
     let followingCVIdentifier = "followingCollectionView"
@@ -55,7 +56,7 @@ class HomeViewController: UIViewController {
         
         // Change Search Bar
         searchView.dropShadow(cornerRadius: 5.0, color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0.0, height: 2.0), radius: 4.0)
-        
+        followingCollectionView.isPagingEnabled = true
     }
     
     // Setup Fake Data
@@ -106,6 +107,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -192,28 +197,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let isFollowingCollectionViewScrolling = followingCollectionView.isDragging || followingCollectionView.isDecelerating
-        if (!isFollowingCollectionViewScrolling) {
-            return
-        }
-        targetContentOffset.pointee = scrollView.contentOffset
-        var factor: CGFloat = 0.5
-        if velocity.x < 0 {
-            factor = -factor
-        }
-        let indexPath = IndexPath(row: (Int(scrollView.contentOffset.x / followingCollectionCellWidth + factor)), section: 0)
-        followingCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-    }
 }
 
 extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y
         if (y < 0) {
-            if (topViewHeightConstraint.constant < 350) {
+            if (topViewHeightConstraint.constant < 300) {
                 topViewHeightConstraint.constant -= y
-                self.view.layoutIfNeeded()
+                self.topView.layoutIfNeeded()
             }
             scrollView.contentOffset.y = 0
         }
@@ -223,11 +215,13 @@ extension HomeViewController: UIScrollViewDelegate {
         stopedScrolling()
     }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        stopedScrolling()
+        if (!decelerate){
+            stopedScrolling()
+        }
         
     }
     func stopedScrolling() {
         topViewHeightConstraint.constant = 180
-        self.view.layoutIfNeeded()
+        self.topView.layoutIfNeeded()
     }
 }

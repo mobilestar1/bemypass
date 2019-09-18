@@ -589,6 +589,7 @@
                         <outlet property="quickActionsCollectionView" destination="SwT-aM-fbB" id="icf-Cx-jco"/>
                         <outlet property="scrollViewTopConstraint" destination="uGm-N2-Euu" id="014-b3-7ez"/>
                         <outlet property="searchView" destination="8ob-Km-sax" id="egd-lX-Cya"/>
+                        <outlet property="topView" destination="U3L-5T-tuD" id="gM8-hY-AF0"/>
                         <outlet property="topViewHeightConstraint" destination="e72-Mw-YtA" id="A1Z-qf-02K"/>
                     </connections>
                 </viewController>

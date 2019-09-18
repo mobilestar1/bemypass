@@ -3,13 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "HomeViewController.scrollViewWillEndDragging(_:withVelocity:targetContentOffset:):HomeViewController.swift">
+         contextName = "HomeViewController.collectionView(_:numberOfItemsInSection:):HomeViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "followingCollectionView.isDragging">
-            </PersistentString>
-            <PersistentString
-               value = "followingCollectionView.isDecelerating">
+               value = "quickActionsAry.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -22,10 +19,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "HomeViewController.collectionView(_:numberOfItemsInSection:):HomeViewController.swift">
+         contextName = "HomeViewController.scrollViewWillEndDragging(_:withVelocity:targetContentOffset:):HomeViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "quickActionsAry.count">
+               value = "Int(page)">
+            </PersistentString>
+            <PersistentString
+               value = "followingCollectionView.isDragging">
+            </PersistentString>
+            <PersistentString
+               value = "followingCollectionView.isDecelerating">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
