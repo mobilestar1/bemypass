@@ -42,17 +42,6 @@ class HomeViewController: UIViewController {
         initLayout()
     }
     
-    override func viewWillLayoutSubviews() {
-        var topSafeArea: CGFloat
-        if #available(iOS 11.0, *) {
-            topSafeArea = view.safeAreaInsets.top
-        } else {
-            topSafeArea = topLayoutGuide.length
-        }
-        // Change scrollview top constraint
-//        topViewTopConstraint.constant = topSafeArea
-    }
-    
     func initLayout() {
         
         topViewTopConstraint = topView.topAnchor.constraint(equalTo: view.topAnchor)
