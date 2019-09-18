@@ -40,7 +40,8 @@ class HomeViewController: UIViewController {
         // Init Layout
         initLayout()
     }
-        
+    
+    
     func initLayout() {
         
         // Hide keyboard when tapoutside
@@ -199,6 +200,9 @@ extension HomeViewController: UIScrollViewDelegate {
                 self.topView.layoutIfNeeded()
             }
             scrollView.contentOffset.y = 0
+        }
+        if (scrollView.isDecelerating) {
+            stopedScrolling()
         }
     }
     
