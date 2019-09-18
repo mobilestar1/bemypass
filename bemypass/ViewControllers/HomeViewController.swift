@@ -40,20 +40,11 @@ class HomeViewController: UIViewController {
         // Init Layout
         initLayout()
     }
-    
-    override func viewWillLayoutSubviews() {
-        var topSafeArea: CGFloat
-        if #available(iOS 11.0, *) {
-            topSafeArea = view.safeAreaInsets.top
-        } else {
-            topSafeArea = topLayoutGuide.length
-        }
-        // Change scrollview top constraint
-        scrollViewTopConstraint.constant = -topSafeArea
-    }
-    
+        
     func initLayout() {
         
+        // Hide keyboard when tapoutside
+        self.hideKeyboardWhenTappedAround()
         // Change Search Bar
         searchView.dropShadow(cornerRadius: 5.0, color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0.0, height: 2.0), radius: 4.0)
         followingCollectionView.isPagingEnabled = true

@@ -8,11 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4B0AEF2F232BD53F009562E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AEF2E232BD53F009562E0 /* AppDelegate.swift */; };
-		4B0AEF34232BD53F009562E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AEF32232BD53F009562E0 /* Main.storyboard */; };
-		4B0AEF39232BD540009562E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AEF37232BD540009562E0 /* LaunchScreen.storyboard */; };
 		4B0AEF44232BD540009562E0 /* bemypassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AEF43232BD540009562E0 /* bemypassTests.swift */; };
 		4B0AEF4F232BD540009562E0 /* bemypassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AEF4E232BD540009562E0 /* bemypassUITests.swift */; };
-		4B0AEF62232BD770009562E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AEF60232BD770009562E0 /* Assets.xcassets */; };
 		4B0AEFC9232BDFA9009562E0 /* EncodeSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AEFC1232BDFA9009562E0 /* EncodeSans-Black.ttf */; };
 		4B0AEFCA232BDFA9009562E0 /* EncodeSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AEFC2232BDFA9009562E0 /* EncodeSans-Bold.ttf */; };
 		4B0AEFCB232BDFA9009562E0 /* EncodeSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AEFC3232BDFA9009562E0 /* EncodeSans-ExtraBold.ttf */; };
@@ -28,8 +25,12 @@
 		4B0AEFDB232BF18D009562E0 /* QuickActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AEFDA232BF18D009562E0 /* QuickActions.swift */; };
 		4B0AEFDD232BF226009562E0 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AEFDC232BF226009562E0 /* Plane.swift */; };
 		4B0AEFDF232BF317009562E0 /* NearbyAirPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AEFDE232BF317009562E0 /* NearbyAirPort.swift */; };
+		4B2B762C233297BE00EC1A35 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2B762B233297BE00EC1A35 /* UIViewController+Extension.swift */; };
 		4B7F59AA232BFC66005011FE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F59A9232BFC66005011FE /* UIView+Extension.swift */; };
 		4B7F59AC232C2EE6005011FE /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F59AB232C2EE6005011FE /* UILabel+Extension.swift */; };
+		4BF5DCA32332907800CEF7A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AEF32232BD53F009562E0 /* Main.storyboard */; };
+		4BF5DCA42332907800CEF7A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AEF37232BD540009562E0 /* LaunchScreen.storyboard */; };
+		4BF5DCA52332907800CEF7A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AEF60232BD770009562E0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		4B0AEFDA232BF18D009562E0 /* QuickActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActions.swift; sourceTree = "<group>"; };
 		4B0AEFDC232BF226009562E0 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		4B0AEFDE232BF317009562E0 /* NearbyAirPort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyAirPort.swift; sourceTree = "<group>"; };
+		4B2B762B233297BE00EC1A35 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		4B7F59A9232BFC66005011FE /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		4B7F59AB232C2EE6005011FE /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,6 +235,7 @@
 			children = (
 				4B7F59A9232BFC66005011FE /* UIView+Extension.swift */,
 				4B7F59AB232C2EE6005011FE /* UILabel+Extension.swift */,
+				4B2B762B233297BE00EC1A35 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -341,14 +344,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BF5DCA32332907800CEF7A4 /* Main.storyboard in Resources */,
+				4BF5DCA42332907800CEF7A4 /* LaunchScreen.storyboard in Resources */,
+				4BF5DCA52332907800CEF7A4 /* Assets.xcassets in Resources */,
 				4B0AEFCD232BDFA9009562E0 /* EncodeSans-Light.ttf in Resources */,
-				4B0AEF39232BD540009562E0 /* LaunchScreen.storyboard in Resources */,
 				4B0AEFCF232BDFA9009562E0 /* EncodeSans-Regular.ttf in Resources */,
 				4B0AEFCA232BDFA9009562E0 /* EncodeSans-Bold.ttf in Resources */,
 				4B0AEFD0232BDFA9009562E0 /* EncodeSans-SemiBold.ttf in Resources */,
 				4B0AEFC9232BDFA9009562E0 /* EncodeSans-Black.ttf in Resources */,
-				4B0AEF62232BD770009562E0 /* Assets.xcassets in Resources */,
-				4B0AEF34232BD53F009562E0 /* Main.storyboard in Resources */,
 				4B0AEFCC232BDFA9009562E0 /* EncodeSans-ExtraLight.ttf in Resources */,
 				4B0AEFCB232BDFA9009562E0 /* EncodeSans-ExtraBold.ttf in Resources */,
 				4B0AEFCE232BDFA9009562E0 /* EncodeSans-Medium.ttf in Resources */,
@@ -377,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B0AEFDF232BF317009562E0 /* NearbyAirPort.swift in Sources */,
+				4B2B762C233297BE00EC1A35 /* UIViewController+Extension.swift in Sources */,
 				4B0AEFD7232BEFB0009562E0 /* FollowingCollectionViewCell.swift in Sources */,
 				4B7F59AC232C2EE6005011FE /* UILabel+Extension.swift in Sources */,
 				4B0AEFDB232BF18D009562E0 /* QuickActions.swift in Sources */,
@@ -570,7 +574,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7JA284CVL4;
 				INFOPLIST_FILE = "$(SRCROOT)/bemypass/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -578,7 +582,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bemypass.bemypass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Geoff Development Provision";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
