@@ -14,13 +14,14 @@ class HomeViewController: UIViewController {
     var planeAry = [Plane]()
     var nearbyAirPlaneAry = [NearbyAirPort]()
     
-    @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var quickActionsCollectionView: UICollectionView!
     @IBOutlet weak var followingCollectionView: UICollectionView!
     @IBOutlet weak var nearByCollectionView: UICollectionView!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topView: UIView!
+    var topViewTopConstraint: NSLayoutConstraint!
     
     let quickActionsCVIdentifier = "quickActionsCollectionView"
     let followingCVIdentifier = "followingCollectionView"
@@ -41,8 +42,21 @@ class HomeViewController: UIViewController {
         initLayout()
     }
     
+    override func viewWillLayoutSubviews() {
+        var topSafeArea: CGFloat
+        if #available(iOS 11.0, *) {
+            topSafeArea = view.safeAreaInsets.top
+        } else {
+            topSafeArea = topLayoutGuide.length
+        }
+        // Change scrollview top constraint
+//        topViewTopConstraint.constant = topSafeArea
+    }
     
     func initLayout() {
+        
+        topViewTopConstraint = topView.topAnchor.constraint(equalTo: view.topAnchor)
+        NSLayoutConstraint.activate([topViewTopConstraint])
         
         // Hide keyboard when tapoutside
         self.hideKeyboardWhenTappedAround()
@@ -195,28 +209,9 @@ extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y
         if (y < 0) {
-            if (topViewHeightConstraint.constant < 300) {
-                topViewHeightConstraint.constant -= y
-                self.topView.layoutIfNeeded()
-            }
-            scrollView.contentOffset.y = 0
+            topViewHeightConstraint.constant = 180-y
+        } else {
+            topViewTopConstraint.constant = -scrollView.contentOffset.y
         }
-        if (scrollView.isDecelerating) {
-            stopedScrolling()
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        stopedScrolling()
-    }
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if (!decelerate){
-            stopedScrolling()
-        }
-        
-    }
-    func stopedScrolling() {
-        topViewHeightConstraint.constant = 180
-        self.topView.layoutIfNeeded()
     }
 }
