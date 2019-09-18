@@ -32,17 +32,17 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YPb-OH-fnV" customClass="HomeViewController" customModule="bemypass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bb6-YL-bXH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvx-jA-A0r">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTM-TE-e3m" userLabel="Scroll Parent View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3L-5T-tuD" userLabel="Top View">
-                                                <rect key="frame" x="0.0" y="-207.5" width="375" height="180"/>
+                                                <rect key="frame" x="0.0" y="-7.5" width="375" height="180"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="t0l-VU-sVe">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
@@ -96,13 +96,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Actions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2up-Qq-VNT">
-                                                <rect key="frame" x="15" y="-12.5" width="345" height="22.5"/>
+                                                <rect key="frame" x="15" y="187.5" width="345" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="EncodeSans-Bold" family="Encode Sans" pointSize="18"/>
                                                 <color key="textColor" red="0.17254901960784313" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SwT-aM-fbB">
-                                                <rect key="frame" x="0.0" y="25" width="375" height="120"/>
+                                                <rect key="frame" x="0.0" y="225" width="375" height="120"/>
                                                 <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="DhQ-IL-2Vn"/>
@@ -168,13 +168,13 @@
                                                 </connections>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZJ-el-Gsi">
-                                                <rect key="frame" x="15" y="160" width="345" height="22.5"/>
+                                                <rect key="frame" x="15" y="360" width="345" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="EncodeSans-Bold" family="Encode Sans" pointSize="18"/>
                                                 <color key="textColor" red="0.17254901959999999" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O1L-vd-xAo">
-                                                <rect key="frame" x="10" y="197.5" width="355" height="210"/>
+                                                <rect key="frame" x="10" y="397.5" width="355" height="210"/>
                                                 <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="210" id="h3b-wJ-zAF"/>
@@ -461,13 +461,13 @@
                                                 </connections>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airports Nearby" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgr-6H-Wul">
-                                                <rect key="frame" x="15" y="427.5" width="345" height="22.5"/>
+                                                <rect key="frame" x="15" y="627.5" width="345" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="EncodeSans-Bold" family="Encode Sans" pointSize="18"/>
                                                 <color key="textColor" red="0.17254901959999999" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="R2m-TI-iQX">
-                                                <rect key="frame" x="15" y="465" width="345" height="320"/>
+                                                <rect key="frame" x="15" y="665" width="345" height="320"/>
                                                 <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="320" id="4sy-9C-gmW"/>
@@ -581,7 +581,7 @@
                         <viewLayoutGuide key="safeArea" id="jmP-GN-ori"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="Home" id="svc-vW-3qV"/>
-                    <size key="freeformSize" width="375" height="800"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="followingCollectionView" destination="O1L-vd-xAo" id="35M-Mg-eLT"/>
                         <outlet property="nearByCollectionView" destination="R2m-TI-iQX" id="Ay3-vH-0kk"/>

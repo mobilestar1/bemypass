@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     let followingCVIdentifier = "followingCollectionView"
     let nearByCVIdentifier = "nearByCollectionView"
     var followingCollectionCellWidth = UIScreen.main.bounds.width - 20
+    var topSafeArea: CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,14 @@ class HomeViewController: UIViewController {
         // Change Search Bar
         searchView.dropShadow(cornerRadius: 5.0, color: UIColor.black, opacity: 0.2, offset: CGSize(width: 0.0, height: 2.0), radius: 4.0)
         followingCollectionView.isPagingEnabled = true
+    }
+    
+    override func viewWillLayoutSubviews() {
+        if #available(iOS 11.0, *) {
+            topSafeArea = view.safeAreaInsets.top
+        } else {
+            topSafeArea = topLayoutGuide.length
+        }
     }
     
     // Setup Fake Data
@@ -198,7 +207,7 @@ extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y
         if (y < 0) {
-            topViewHeightConstraint.constant = 180-y
+            topViewHeightConstraint.constant = max(180-y-topSafeArea, 180)
         } else {
             topViewTopConstraint.constant = -scrollView.contentOffset.y
         }
